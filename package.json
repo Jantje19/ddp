@@ -1,0 +1,41 @@
+{
+  "name": "ddp",
+  "version": "0.1.0",
+  "description": "Library version of Meteor's DDP features",
+  "keywords": [
+    "meteor",
+    "ddp"
+  ],
+  "main": "dist/index.js",
+  "homepage": "https://github.com/Jantje19/ddp#readme",
+  "bugs": {
+    "url": "https://github.com/Jantje19/ddp/issues",
+    "email": "Jantje19@users.noreply.github.com"
+  },
+  "scripts": {
+    "start": "ts-node example/index.ts",
+    "dev": "nodemon -w src/* -w example/* ./example/index.ts",
+    "test": "vitest",
+    "build": "rimraf ./dist && tsc"
+  },
+  "author": "Jantje19",
+  "license": "MIT",
+  "dependencies": {
+    "@bluelibs/ejson": "^1.2.1",
+    "mongodb": "^4.7.0",
+    "typed-emitter": "^2.1.0",
+    "ws": "^8.8.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.3",
+    "nodemon": "^2.0.18",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.4",
+    "vitest": "^0.16.0"
+  },
+  "optionalDependencies": {
+    "eslint": "^8.18.0",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.8.1"
+  }
+}
