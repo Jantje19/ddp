@@ -297,6 +297,11 @@ export default (port: number, options: ServerOptions = {}) => {
           return;
         }
 
+        if (ws.unacknowledgedPings.length >= 5) {
+          ws.close();
+          return;
+        }
+
         const id = generateSessionId();
         ws.unacknowledgedPings.push(id);
 
