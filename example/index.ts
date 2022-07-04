@@ -1,4 +1,4 @@
-import DDP, { MemoryStore, check } from "ddp";
+import DDP, { MemoryStore, check } from "../src";
 
 const memStore = new MemoryStore("test");
 
