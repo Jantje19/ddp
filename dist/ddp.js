@@ -134,11 +134,14 @@ const messages = {
         }
     },
 };
-exports.default = (port, options = {}) => {
-    const wss = new ws_1.WebSocketServer({
-        ...options,
-        port,
-    });
+exports.default = (...args) => {
+    const options = (() => {
+        if (args.length === 2 || typeof args[0] === "number") {
+            return { ...args[1], port: args[0] };
+        }
+        return args[0];
+    })();
+    const wss = new ws_1.WebSocketServer(options);
     wss.on("connection", (ws) => {
         ws.on("message", (data) => {
             const json = (() => {

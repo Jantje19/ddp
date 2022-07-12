@@ -89,7 +89,13 @@ class MongoStore {
 }
 exports.MongoStore = MongoStore;
 exports.default = async (uri, dbName, options, dbOptions) => {
-    const client = new mongodb_1.MongoClient(uri, options);
+    const client = new mongodb_1.MongoClient(uri, {
+        readPreference: "primary",
+        directConnection: true,
+        replicaSet: "rs",
+        appName: "ddp",
+        ...options,
+    });
     await client.connect();
     db = client.db(dbName, dbOptions);
     return MongoStore;

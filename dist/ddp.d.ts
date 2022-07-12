@@ -48,7 +48,7 @@ declare const messages: {
     sub: (message: Partial<SubMessage>, ws: WebSocket) => void;
     unsub: (message: Partial<UnsubMessage>, ws: WebSocket) => void;
 };
-declare const _default: (port: number, options?: ServerOptions) => {
+declare const _default: (...args: [port: number, options?: ServerOptions] | [options: ServerOptions]) => {
     close(): void;
     method(name: string, method: Method): void;
     methods(_methods: Record<string, Method>): void;
