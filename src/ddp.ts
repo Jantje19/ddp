@@ -200,11 +200,18 @@ const messages = {
   },
 };
 
-export default (port: number, options: ServerOptions = {}) => {
-  const wss = new WebSocketServer({
-    ...options,
-    port,
-  });
+export default (
+  ...args: [port: number, options?: ServerOptions] | [options: ServerOptions]
+) => {
+  const options = (() => {
+    if (args.length === 2 || typeof args[0] === "number") {
+      return { ...args[1], port: args[0] } as ServerOptions;
+    }
+
+    return args[0];
+  })();
+
+  const wss = new WebSocketServer(options);
 
   wss.on("connection", (ws: ExtendedWebSocket) => {
     ws.on("message", (data) => {

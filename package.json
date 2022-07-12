@@ -13,8 +13,8 @@
     "email": "Jantje19@users.noreply.github.com"
   },
   "scripts": {
-    "start": "ts-node example/index.ts",
-    "dev": "nodemon -w src/* -w example/* ./example/index.ts",
+    "start": "ts-node ./examples/simple.ts",
+    "dev": "nodemon -w src/* -w examples/* ./examples/simple.ts",
     "test": "vitest",
     "build": "rimraf ./dist && tsc"
   },
