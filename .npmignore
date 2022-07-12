@@ -1,2 +1,6 @@
 example
 src
+
+.prettierrc.json
+LICENSE
+tsconfig.json
