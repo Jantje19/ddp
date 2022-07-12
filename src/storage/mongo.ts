@@ -135,7 +135,14 @@ export default async (
   options?: MongoClientOptions,
   dbOptions?: DbOptions
 ): Promise<typeof MongoStore> => {
-  const client = new MongoClient(uri, options);
+  const client = new MongoClient(uri, {
+    readPreference: "primary",
+    directConnection: true,
+    replicaSet: "rs",
+    appName: "ddp",
+    ...options,
+  });
+
   await client.connect();
   db = client.db(dbName, dbOptions);
 
